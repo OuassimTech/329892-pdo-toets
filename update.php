@@ -11,9 +11,12 @@ try {
     // set the resulting array to associative
     $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
     $r = $stmt->fetch();
+    // var_dump($r);exit();
 } catch (PDOException $e) {
     echo "Error: " . $e->getMessage();
 }
+
+$kruiden=explode(", ",$r['kruiden']);
 
 ?>
 
@@ -63,19 +66,19 @@ try {
 
                 <label for="models">Pizzatoppings</label>
                 <div class="form-check">
-                    <input name="pizzatoppings" class="form-check-input" type="radio" name="flexRadioDefault" value="vegan" id="flexRadioDefault1">
+                    <input name="pizzatoppings" class="form-check-input" type="radio" name="flexRadioDefault" value="vegan" <?=($r['pizzatoppings'] == 'vegan') ? "checked" : "" ?> id="flexRadioDefault1">
                     <label class="form-check-label" for="flexRadioDefault1">
                         vegan
                     </label>
                 </div>
                 <div class="form-check">
-                    <input name="pizzatoppings" class="form-check-input" type="radio" name="flexRadioDefault" value="vegetarisch" id="flexRadioDefault1">
+                    <input name="pizzapizzatoppingss" class="form-check-input" type="radio" name="flexRadioDefault" value="vegetarisch" <?=($r['pizzatoppings'] == 'vegetarisch') ? "checked" : "" ?> id="flexRadioDefault1">
                     <label class="form-check-label" for="flexRadioDefault1">
                         vegetarisch
                     </label>
                 </div>
                 <div class="form-check">
-                    <input name="pizzatoppings" class="form-check-input" type="radio" name="flexRadioDefault" value="vlees" id="flexRadioDefault1">
+                    <input name="pizzatoppings" class="form-check-input" type="radio" name="flexRadioDefault" value="vlees" <?=($r['pizzatoppings'] == 'vlees') ? "checked" : "" ?> id="flexRadioDefault1">
                     <label class="form-check-label" for="flexRadioDefault1">
                         vlees
                     </label>
@@ -85,25 +88,25 @@ try {
 
                 <label for="models">Kruiden</label>
                 <div class="form-check">
-                    <input name="kruiden[]" class="form-check-input" type="checkbox" value="Peterselie" <?=$v['kruiden'] ? "checked" : "" ?> id="flexCheckDefault">
+                    <input name="kruiden[]" class="form-check-input" type="checkbox" value="Peterselie" <?=(in_array("Peterselie", $kruiden)) ? "checked" : "" ?> id="flexCheckDefault">
                     <label class="form-check-label" for="flexCheckDefault">
                         Peterselie
                     </label>
                 </div>
                 <div class="form-check">
-                    <input name="kruiden[]" class="form-check-input" type="checkbox" value="Oregano" <?=$v['kruiden'] ? "checked" : "" ?> id="flexCheckDefault">
+                    <input name="kruiden[]" class="form-check-input" type="checkbox" value="Oregano" <?=(in_array("Oregano", $kruiden)) ? "checked" : "" ?> id="flexCheckDefault">
                     <label class="form-check-label" for="flexCheckDefault">
                         Oregano
                     </label>
                 </div>
                 <div class="form-check">
-                    <input name="kruiden[]" class="form-check-input" type="checkbox" value="Chili flakes" <?=$v['kruiden'] ? "checked" : "" ?> id="flexCheckDefault">
+                    <input name="kruiden[]" class="form-check-input" type="checkbox" value="Chili flakes" <?=(in_array("Chili flakes", $kruiden)) ? "checked" : "" ?> id="flexCheckDefault">
                     <label class="form-check-label" for="flexCheckDefault">
                         Chili flakes
                     </label>
                 </div>
                 <div class="form-check">
-                    <input name="kruiden[]" class="form-check-input" type="checkbox" value="Zwarte pepper" <?=$v['kruiden'] ? "checked" : "" ?> id="flexCheckDefault">
+                    <input name="kruiden[]" class="form-check-input" type="checkbox" value="Zwarte pepper" <?=(in_array("Zwarte pepper", $kruiden)) ? "checked" : "" ?> id="flexCheckDefault">
                     <label class="form-check-label" for="flexCheckDefault">
                         Zwarte pepper
                     </label>

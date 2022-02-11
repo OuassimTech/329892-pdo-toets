@@ -72,9 +72,7 @@ if (isset($_POST['pizzatoppings'])) {
 
 if (isset($_POST['kruiden'])) {
     try {
-        var_dump($_POST);
         $kruiden = implode(", ", $_POST['kruiden']);
-        echo $kruiden;
         // exit();
         $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
         // set the PDO error mode to exception
@@ -89,7 +87,6 @@ if (isset($_POST['kruiden'])) {
         $stmt->bindParam(':kruiden', $kruiden);
 
         $kruiden = implode(", ", $_POST['kruiden']);
-        echo $kruiden;
 
         // execute the query
         $stmt->execute();
@@ -100,8 +97,6 @@ if (isset($_POST['kruiden'])) {
 }
 
 $conn = null;
-
-var_dump($_POST);
 
 header("Refresh:5.5; url=read.php");
 
